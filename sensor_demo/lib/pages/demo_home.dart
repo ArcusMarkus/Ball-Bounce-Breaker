@@ -5,7 +5,7 @@ import 'package:sensor_demo/widgets/snake.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 class SensorHomePage extends StatefulWidget {
-  const SensorHomePage({Key? key, this.title}) : super(key: key);
+  const SensorHomePage({super.key, this.title});
 
   final String? title;
 
