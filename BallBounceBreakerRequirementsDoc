@@ -1,0 +1,51 @@
+Project 4 Requirements Doc
+Project name: Ball Bounce Breaker
+Date: 9/15/26
+Version: 1.0
+By: Mark Belmonte, Bryson DeLozier, Jaxon Treadwell, David Krause
+
+1.	Introduction
+  Description: This document is aimed to help organize and plan out the Sensory Overload Project 4 to make dividing out work, coding, and presenting easier.
+
+1.1	Product Scope: List the benefits, objectives, and goals of the product.
+  -	This game gives the player a way to spend free time, compete with friends and find enjoyment. The goal of our project is to give users a playable game to enjoy and give the user a challenge while we want to make the game finite where the user can win and get a score.
+1.2	Product value: Describe how the audience will find value in the product.
+  -	We want the audience to experience joy when interaction with this project. They will find value in it because of how much thought is put into what the users will have to go through when maneuvering our app. Although this is only a game based off the old Atari game Breakout we intend for the audience to be able to easily use our app while getting the fun of playing a classic game.
+1.3	Intended audience: Write who the product is intended to serve.
+  -	We are making our game for people who are interested in playing something that has an end but also wants to be able to compare previous scores or top scores with their friends. 
+1.4	Intended use: Describe how will the intended audience use this product.
+  -	We intend users to launch the game on their mobile devices, interact with the screen through touch to start the game, and then use their phone’s built in accelerometer and tilt their phone to control the paddle at the bottom of their screen. Through playing the game, the players will feel rewarded when they win and enjoy their time playing. 
+1.5	General description: Give a summary of the functions the software would perform and the features to be included.
+  -	What we have planned is to have three screens that will be navigated through buttons. Each screen will be connected to each other with the final screen being connected to both the beginning and the game screen for replay ability and for exiting the game. The app will also keep track of whatever score the player reaches as well as a set amount of lives the player has, ball physics, and interactions with the ball and blocks. We will be using an accelerometer to move the platform around to be able to bounce the ball back and forth and, if we have enough time, will eventually implement a leaderboard that keeps track of the highest scores. 
+2.	Functional Requirements
+  List the design requirements, graphics requirements, operating system requirements, 	and constraints of the product.
+  -	Our design will include a home page that shows the user a couple of previous high scores, as well as a play/quit button. The play button will take the user to a game screen, where blocks will be at the top, and a paddle and ball at the bottom. This is where the user will play the game. One the game has ended, either in win or lose, the player will be directed to the third screen, which has the most recent score of the game that had just ended, as well as an option to play again or go back to the first screen. 
+  -	This shouldn’t be a graphically intense game, so most if not, all phones should work. 
+  -	The operating system will need to have an accelerometer. 
+  -	Because the game uses the built-in accelerometer to the phone, this game can only be played on a phone with an accelerometer. Even if the game launches in the browser through VSCode, the game will most likely be unplayable due to the computer not having an accelerometer.
+3.	External Interface Requirements
+3.1	User interface Requirements
+  -	The user will tilt to play, moving the paddle, and click to move between screens. Clicking the ‘Start’ button will direct the user from the home/starting screen to the game screen. 
+3.2	Hardware Interface Requirements
+  -	The supported devices are phones with the accelerometer sensor. This software should be able to be run without network connection.
+3.3	Software Interface Requirements
+  -	This program will run on Android and iOS using Dart/Flutter.
+3.4	Communication Interface Requirements
+  -	This program has not communication interfaces. The game operates offline and doesn’t use network connectivity. 
+4.	Non-Functional Requirements
+4.1 Security
+  -	There will be no personal data collection from the user beyond a local high score and a leaderboard with usernames. Storing the scores locally allows no network transmission of user data.
+4.2 Capacity
+  - The number of local high scores stored will be the top 3 recent highest scores. 
+4.3 Compatibility
+  - Our app will be compatible if it's running on a Mobile OS System and has accelerometer hardware.
+4.4 Reliability
+  - The game should not crash with rapid movement of the user's phone when tilting, or when interacting with the screens.
+4.5 Scalability
+  - The most scaling this program will have is adding slightly different/extra interactions with the ball and paddle. The workload shouldn’t increase much if at all from scaling the program up into something slightly more complicated. 
+4.6 Maintainability
+  - Through the flow of the app and it being a single user experience there shouldn’t be many bugs or needed feature changes after launch, if needed though through GitHub we can mark specific features needed working on to fix the application. 
+4.7 Usability
+  - The user should be able to open the app and see a title screen with the recent high scores and two pressable buttons for starting or exiting the app. When clicking the start button the user will be prompted to press the screen to start and then can tilt their phone moving the paddle at the bottom of the screen to hit a ball that bounces and breaks blocks to add to the high score. After all blocks are broken or the user loses all their lives by not bouncing their ball, the game will end and ask if they want to play again or quit menu while displaying their score.
+Images:
+    
