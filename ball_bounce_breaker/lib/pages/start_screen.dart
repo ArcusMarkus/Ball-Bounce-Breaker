@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
 
-class BallBounceBreaker extends StatelessWidget {
-  const BallBounceBreaker({super.key});
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: const Text('Ball Bounce Breaker')
+      title: const Text('Start Screen')
     ),
     body: Column(
       children: [
         ElevatedButton(
           child: const Text("Start"), 
           onPressed: () {
-            // move us to the next screen
+            Navigator.pushNamed(context, '/game');
           }
         ),
         ElevatedButton(
           child: const Text("Quit"), 
           onPressed: () {
-            // closes the game
+            SystemNavigator.pop();
           }
         )
       ],
