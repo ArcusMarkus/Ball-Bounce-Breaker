@@ -37,15 +37,15 @@ class _GameScreenState extends State<GameScreen> {
     super.dispose();
   }
 
-
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(title: const Text('Game Screen')),
-      body: Center(
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(flex: 4,),
             Container(
               width: _ballSize,
               height: _ballSize,
@@ -55,9 +55,8 @@ class _GameScreenState extends State<GameScreen> {
               ),
             ),
             const SizedBox(height: 20.0),
-            Positioned(
-              width: _paddlewidth,
-              height: _paddleheight,
+            SizedBox(
+              width: double.infinity,
               child: Align(
                 alignment: Alignment(_paddleX, 0.0),
                 child: Container(
@@ -65,13 +64,18 @@ class _GameScreenState extends State<GameScreen> {
                   height: _paddleheight,
                   decoration: BoxDecoration(
                     color: _paddleColor,
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                ),),),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              child: const Text('Finish Game'),
-              onPressed: () => Navigator.pushNamed(context, '/end'),
+                ),
+              ),
+            ),
+            const Spacer(flex: 1,),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24.0),
+              child: ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, '/end'),
+                child: const Text('Finish Game'),
+              ),
             ),
           ],
         ),
