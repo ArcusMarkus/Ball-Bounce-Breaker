@@ -7,3 +7,5 @@ A game where the player bounces a ball upwards to break blocks using the acceler
 - Second Commit: David Krause
 
 - Thrird Test comit: Jaxon Treadwell
+
+- Second 2nd Commit: David Krause
