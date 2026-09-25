@@ -17,7 +17,8 @@ class _GameScreenState extends State<GameScreen> {
   // Tunable values — adjust these to change feel/look.
   static const double _paddlewidth = 135.0;
   static const double _paddleheight = 10.0;
-  static const double _paddleSensitivity = 0.06; // higher = more reactive to tilt
+  static const double _paddleSensitivity =
+      0.06; // higher = more reactive to tilt
   static const double _paddleBottom = 40.0; // gap from bottom of screen
   static const double _ballSize = 20.0;
   static const double _ballSpeed = 4.0; // pixels per tick, ~60 ticks/sec
@@ -40,7 +41,8 @@ class _GameScreenState extends State<GameScreen> {
 
   // Real pixel position of the paddle, derived from _paddleX and screen size.
   double get _paddleTop => _screenSize.height - _paddleBottom - _paddleheight;
-  double get _paddleLeft => (_screenSize.width - _paddlewidth) * (_paddleX + 1) / 2;
+  double get _paddleLeft =>
+      (_screenSize.width - _paddlewidth) * (_paddleX + 1) / 2;
 
   @override
   void initState() {
@@ -69,7 +71,8 @@ class _GameScreenState extends State<GameScreen> {
     setState(() {
       _isPlaying = true;
     });
-    _gameTimer = Timer.periodic(const Duration(milliseconds: 16), (_) => _moveBall());
+    _gameTimer =
+        Timer.periodic(const Duration(milliseconds: 16), (_) => _moveBall());
   }
 
   // Advances the ball and checks it against walls and the paddle.
@@ -98,8 +101,10 @@ class _GameScreenState extends State<GameScreen> {
       // Bounce off the paddle if the ball's bottom edge overlaps it.
       final ballBottom = _ballY + _ballSize;
       final ballCenterX = _ballX + _ballSize / 2;
-      final hitsPaddleX = ballCenterX >= _paddleLeft && ballCenterX <= _paddleLeft + _paddlewidth;
-      final hitsPaddleY = ballBottom >= _paddleTop && ballBottom <= _paddleTop + _paddleheight;
+      final hitsPaddleX = ballCenterX >= _paddleLeft &&
+          ballCenterX <= _paddleLeft + _paddlewidth;
+      final hitsPaddleY =
+          ballBottom >= _paddleTop && ballBottom <= _paddleTop + _paddleheight;
 
       if (_ballSpeedY > 0 && hitsPaddleX && hitsPaddleY) {
         _ballY = _paddleTop - _ballSize;
@@ -152,7 +157,8 @@ class _GameScreenState extends State<GameScreen> {
               child: LayoutBuilder(
                 // Measures the play area so ball/paddle/block math knows the screen bounds.
                 builder: (context, constraints) {
-                  final size = Size(constraints.maxWidth, constraints.maxHeight);
+                  final size =
+                      Size(constraints.maxWidth, constraints.maxHeight);
 
                   if (_screenSize != size) {
                     // Deferred since setState can't run during a build.
@@ -160,7 +166,8 @@ class _GameScreenState extends State<GameScreen> {
                       setState(() {
                         if (_screenSize == Size.zero) {
                           // First measurement only — sets the ball's starting spot.
-                          final paddleTop = size.height - _paddleBottom - _paddleheight;
+                          final paddleTop =
+                              size.height - _paddleBottom - _paddleheight;
                           _ballX = size.width / 2 - _ballSize / 2;
                           _ballY = paddleTop - _ballSize - 4.0;
                         }
@@ -217,7 +224,8 @@ class _GameScreenState extends State<GameScreen> {
                         const Center(
                           child: Text(
                             'Tap Start To Begin!',
-                            style: TextStyle(color: Colors.white, fontSize: 20.0),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
                           ),
                         ),
                     ],
@@ -264,26 +272,17 @@ class BlockPainting extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final brush = Paint()..color = Colors.grey;
 
-    const columns = 5;
-    const gap = 6.0;
-    const topOffset = 50.0;
-    const blockHeight = 18.0;
-    final blockWidth = (size.width - (columns + 1) * gap) / columns;
-
     // draw each block that isn't broken
     for (final block in blocks) {
       if (block.broken) continue;
 
-      final top = topOffset + block.row * (blockHeight + gap);
-      final left = gap + block.column * (blockWidth + gap);
-
       brush.color = block.color;
 
-      final rect = Rect.fromLTWH(left, top, blockWidth, blockHeight);
+      final rect = blockRect(block, size);
       canvas.drawRect(rect, brush);
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
